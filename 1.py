@@ -1,26 +1,17 @@
-from nltk.tokenize import WordPunctTokenizer
-from nltk.stem import PorterStemmer
 from nltk import word_tokenize
+from nltk.stem import PorterStemmer
 
-original_text = []
+root_word = []
 
-def a(text):
-    tokenizer = WordPunctTokenizer()
-    tokens = tokenizer.tokenize(text)
+def stem_word(text:str):
+    text = word_tokenize(text)
     stemmer = PorterStemmer()
-    for words in tokens:
-        original_text.append(stemmer.stem(words))
-    return original_text
+    for word in text:
+        if word.isalpha():
+            root_word.append(stemmer.stem(word))
+        else:
+            root_word.append(word)
+    return root_word
 
-print(a("The cat were play in the garden, and they were having fun."))
-
-
-def b(text):
-    original_text_2 = []
-    tokens = word_tokenize(text)
-    stemmer = PorterStemmer()
-    for words in tokens:
-        original_text_2.append(stemmer.stem(words))
-    return original_text_2
-
-print(b("The cat were play in the garden, and they were having fun."))
+text = 'The cat were playing in the garden, and they were very having fun.'
+print(stem_word(text))

@@ -1,17 +1,16 @@
 def calculate_jaccard_similarity(text1, text2):
-    # Convert texts to sets of words
-    set1 = set(text1.lower().split())
-    set2 = set(text2.lower().split())
-    
-    # Calculate intersection and union
-    intersection = len(set1.intersection(set2))
-    union = len(set1.union(set2))
-    
-    # Calculate Jaccard similarity
-    jaccard_similarity = intersection / union
-    return jaccard_similarity
+    set_1 = text1.lower().strip().split()
+    set_2 = text2.lower().strip().split()
 
-# Input texts
+    intersection = set(set_1).intersection(set(set_2))
+    print(intersection)
+    union = set(set_1).union(set(set_2))
+    print(union)
+
+    jaccard_similar = len(intersection) / len(union) 
+    return jaccard_similar
+
+
 text1 = "The quick brown fox jumps over the lazy dog"
 text2 = "A quick brown fox jumped over a lazy dog"
 
